@@ -1,9 +1,42 @@
 <form [formGroup]="registerForm">
     <div>
         <label> Username</label>
-        <input type="text" formcControlName="username" placeholder="Type your username" />
+        <input type="text" formControlName="username" placeholder="Type your username" />
+        <span *ngIf="username.invalid && username.touched">*Username must have at least 6 characters</span>
     </div>
+
     <div>
-        <button type="submit" (click)="register()">Register</button>
+        <label> Email</label>
+        <input type="email" formControlName="email" placeholder="Type your email" />
+        <span *ngIf="email.invalid && email.touched">*Email must be valid</span>
+    </div>
+
+    <div>
+        <label> Password</label>
+        <input type="password" formControlName="password" placeholder="Type your password" />
+        <span *ngIf="password.invalid && password.touched">*Password must be valid</span>
+    </div>
+
+    <div>
+        <label> First name</label>
+        <input type="text" formControlName="firstname" placeholder="Type your firstname" />
+        <span *ngIf="firstname.invalid && firstname.touched">*First name must have at least 2 characters</span>
+    </div>
+
+    <div>
+        <label> Last name</label>
+        <input type="text" formControlName="lastname" placeholder="Type your lastname" />
+        <span *ngIf="lastname.invalid && lastname.touched">*Last name must have at least 2 characters</span>
+    </div>
+
+    <div>
+        <label> Age</label>
+        <input type="number" formControlName="age" placeholder="Type your age" min="6" max="130" />
+        <span *ngIf="age.invalid && age.touched">*Age must be 6 to 130</span>
+    </div>
+
+
+    <div>
+        <button type="submit" (click)="register()" [disabled]="registerForm.invalid">Register</button>
     </div>
 </form>

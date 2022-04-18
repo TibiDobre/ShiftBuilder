@@ -9,20 +9,59 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+    firstname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    lastname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    age: new FormControl('', [
+      Validators.required,
+      Validators.max(130),
+      Validators.min(6),
+    ]),
   });
 
   constructor() {}
 
   ngOnInit(): void {}
-  
-  get username(){
-    let usernameControl = this.regsiterForm.get("username") as FormControl;
-    return usernameControl.value;
+
+  get username() {
+    return this.registerForm.get('username') as FormControl;
   }
 
-    register(){
-      console.log (this.username);
-    }
+  get email() {
+    return this.registerForm.get('email') as FormControl;
+  }
+
+  get password() {
+    return this.registerForm.get('password') as FormControl;
+  }
+
+  get firstname() {
+    return this.registerForm.get('firstname') as FormControl;
+  }
+
+  get lastname() {
+    return this.registerForm.get('lastname') as FormControl;
+  }
+
+  get age() {
+    return this.registerForm.get('age') as FormControl;
+  }
+
+  register() {
+    console.log(this.username.value);
   }
 }
