@@ -1,1 +1,9 @@
-<p>register works!</p>
+<form [formGroup]="registerForm">
+    <div>
+        <label> Username</label>
+        <input type="text" formcControlName="username" placeholder="Type your username" />
+    </div>
+    <div>
+        <button type="submit" (click)="register()">Register</button>
+    </div>
+</form>
