@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { pathToFileURL } from 'url';
+
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
