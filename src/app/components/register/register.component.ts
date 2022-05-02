@@ -2,6 +2,7 @@ import { registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/auth.service';
+import { FirestoreService } from 'src/app/firestore.service';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +36,10 @@ export class RegisterComponent implements OnInit {
     ]),
   });
 
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    public firestoreService: FirestoreService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -66,6 +70,15 @@ export class RegisterComponent implements OnInit {
   async register() {
     try {
       await this.authService.signUp(this.email.value, this.password.value);
+
+      const username = this.username.value;
+      const email = this.email.value;
+      const firstname = this.firstname.value;
+      const lastname = this.lastname.value;
+      const age = this.age.value;
+
+      this.firestoreService.addUser(username, firstname, lastname, email, age);
+
       this.message = 'Register succesful.';
       this.username.setValue('');
       this.email.setValue('');
@@ -73,6 +86,7 @@ export class RegisterComponent implements OnInit {
       this.firstname.setValue('');
       this.lastname.setValue('');
       this.age.setValue('');
+
       this.username.markAsUntouched();
       this.email.markAsUntouched();
       this.password.markAsUntouched();
