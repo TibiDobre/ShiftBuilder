@@ -1,0 +1,18 @@
+<table>
+    <tr>
+        <td>
+            <img src="/assets/Logo.png">
+            <a routerLink="/MyShifts">My shifts</a>&nbsp;
+            <a routerLink="/AddShift">Add a shift</a>&nbsp;
+            <a routerLink="/EditProfile">Edit your profile</a>
+        </td>
+
+        <td>
+            <a routerLink="/login">Log In</a><br>
+            <a routerLink="/register">Register</a><br>
+
+            <button (click)="logOut()" *ngIf="userProfile"> Log out</button>
+            <h3 *ngIf="userProfile"> Hello,{{userProfile?.firstname}} </h3>
+        </td>
+    </tr>
+</table>

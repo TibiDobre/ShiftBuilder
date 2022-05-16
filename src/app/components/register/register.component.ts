@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(6),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
+
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
@@ -40,8 +41,6 @@ export class RegisterComponent implements OnInit {
     public authService: AuthService,
     public firestoreService: FirestoreService
   ) {}
-
-  ngOnInit(): void {}
 
   get username() {
     return this.registerForm.get('username') as FormControl;
@@ -97,4 +96,5 @@ export class RegisterComponent implements OnInit {
       this.message = 'Register failed.';
     }
   }
+  ngOnInit(): void {}
 }

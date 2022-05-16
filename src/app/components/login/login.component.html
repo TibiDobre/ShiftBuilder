@@ -1,0 +1,21 @@
+<form [formGroup]="loginForm">
+    <div>
+        <label style="font-weight: bold; margin-right: 33px;">Email</label>
+        <input style="margin: 10px;" type="email" formControlName="email" placeholder="Type your email" />
+        <span *ngIf="email.invalid && email.touched">*Email must be valid</span>
+    </div>
+
+    <div>
+        <label style="font-weight: bold; margin-right:8px;">Password</label>
+        <input style="margin:10px;" type="password" formControlName=p assword placeholder="Type your password" />
+        <span *ngIf="password.invalid && password.touched">*Password must be valid</span>
+    </div>
+
+    <div>
+        <button type="submit" (click)="login()" [disabled]="loginForm.invalid">Log in</button>
+    </div>
+
+    <div>
+        {{message}}
+    </div>
+</form>

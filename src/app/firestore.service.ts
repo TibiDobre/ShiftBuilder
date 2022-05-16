@@ -22,4 +22,11 @@ export class FirestoreService {
       age: age,
     });
   }
+
+  getUser(email: string) {
+    return this.firestore.firestore
+      .collection('users')
+      .where('email', '==', email)
+      .get();
+  }
 }
