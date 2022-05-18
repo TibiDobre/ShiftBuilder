@@ -14,7 +14,15 @@ export class NavbarComponent implements OnInit {
   }
   userProfile?: UserProfile;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    authService.authChanged.subscribe((loggedIn) => {
+      if (loggedIn) {
+        this.userProfile = this.authService.getCurrentUser();
+      } else {
+        this.userProfile = undefined;
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.userProfile = this.authService.getCurrentUser();

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FirestoreService } from './firestore.service';
 import { UserProfile } from './data/user.profile';
@@ -9,6 +9,7 @@ import { EmailValidator } from '@angular/forms';
   providedIn: 'root',
 })
 export class AuthService {
+  public authChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(
     public afauth: AngularFireAuth,
     public firestoreService: FirestoreService
@@ -32,8 +33,11 @@ export class AuthService {
           username
         );
         localStorage.setItem('currentUser', JSON.stringify(profileData));
+        this.authChanged.emit(true);
       } else {
         console.log('User has been logged out');
+        localStorage.removeItem('currentUser');
+        this.authChanged.emit(false);
       }
     });
   }

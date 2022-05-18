@@ -76,7 +76,13 @@ export class RegisterComponent implements OnInit {
       const lastname = this.lastname.value;
       const age = this.age.value;
 
-      this.firestoreService.addUser(username, firstname, lastname, email, age);
+      await this.firestoreService.addUser(
+        username,
+        firstname,
+        lastname,
+        email,
+        age
+      );
 
       this.message = 'Register succesful.';
       this.username.setValue('');
