@@ -1,1 +1,28 @@
-<p>my-shifts works!</p>
+<h2>My shifts</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Hourly wage</th>
+            <th>Shift place</th>
+            <th>Shift name</th>
+            <th>Earnings</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr *ngFor="let shift of shifts">
+        <td>{{shift.date}}</td>
+        <td>{{shift.startTime}}</td>
+        <td>{{shift.endTime}}</td>
+        <td>{{shift.hourlyWage}}</td>
+        <td>{{shift.workPlace}}</td>
+        <td>{{shift.shiftName}}</td>
+        <td>{{shift.hourlyWage * (shift.endTime - shift.startTime)}}</td>
+        <td>
+            <!-- <a routerLink="/editShift/{{encode(shift.shiftName)}}">Edit shift</a> -->
+            <a [routerLink]="['/editShift', shift.shiftName]">Edit</a>
+        </td>
+    </tr>
+</table>

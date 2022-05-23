@@ -18,9 +18,10 @@ import { AddShiftComponent } from './components/add-shift/add-shift.component';
 import { UpComingShiftComponent } from './components/up-coming-shift/up-coming-shift.component';
 import { PastWeekShiftsComponent } from './components/past-week-shifts/past-week-shifts.component';
 import { HighestEarningsComponent } from './components/highest-earnings/highest-earnings.component';
+import { EditShiftComponent } from './components/edit-shift/edit-shift.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, IndexComponent, NavbarComponent, MyShiftsComponent, EditProfileComponent, AddShiftComponent, UpComingShiftComponent, PastWeekShiftsComponent, HighestEarningsComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, IndexComponent, NavbarComponent, MyShiftsComponent, EditProfileComponent, AddShiftComponent, UpComingShiftComponent, PastWeekShiftsComponent, HighestEarningsComponent, EditShiftComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -41,4 +41,19 @@ export class FirestoreService {
       .where('shiftName', '==', name)
       .get();
   }
+
+  getAllShiftsForUser(currentUserEmail: string | undefined) {
+    return this.firestore.firestore
+      .collection('shifts')
+      .where('userEmail', '==', currentUserEmail)
+      .get();
+  }
+
+  async updateShift(shift: Shift) {
+    const data = await this.firestore.firestore
+      .collection('shifts')
+      .where('shiftName', '==', shift.shiftName)
+      .get();
+    return data.docs[0].ref.update(shift);
+  }
 }
