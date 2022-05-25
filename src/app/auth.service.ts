@@ -67,4 +67,20 @@ export class AuthService {
       profile['username']
     );
   }
+  updateCurrentUser(
+    username: string,
+    firstname: string,
+    lastname: string,
+    email: string,
+    age: number
+  ) {
+    const profileData = new UserProfile(
+      age,
+      email,
+      firstname,
+      lastname,
+      username
+    );
+    localStorage.setItem('currentUser', JSON.stringify(profileData));
+  }
 }

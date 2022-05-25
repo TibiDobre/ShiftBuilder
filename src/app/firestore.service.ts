@@ -49,6 +49,26 @@ export class FirestoreService {
       .get();
   }
 
+  async updateUser(
+    username: string,
+    firstname: string,
+    lastname: string,
+    email: string,
+    age: number
+  ) {
+    const data = await this.firestore.firestore
+      .collection('users')
+      .where('email', '==', email)
+      .get();
+    return data.docs[0].ref.update({
+      email: email,
+      username: username,
+      firstname: firstname,
+      lastname: lastname,
+      age: age,
+    });
+  }
+
   async updateShift(shift: Shift) {
     const data = await this.firestore.firestore
       .collection('shifts')
