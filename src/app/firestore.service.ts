@@ -56,4 +56,25 @@ export class FirestoreService {
       .get();
     return data.docs[0].ref.update(shift);
   }
+
+  searchShifts(
+    userEmail: string,
+    startDate?: Date,
+    endDate?: Date,
+    shiftPlace?: string
+  ) {
+    let userShifts = this.firestore.firestore
+      .collection('shifts')
+      .where('userEmail', '==', userEmail);
+    if (startDate) {
+      userShifts = userShifts.where('date', '>=', startDate!);
+    }
+    if (endDate) {
+      userShifts = userShifts.where('date', '<=', endDate!);
+    }
+    if (shiftPlace) {
+      userShifts = userShifts.where('workPlace', '==', shiftPlace!);
+    }
+    return userShifts.get();
+  }
 }
