@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { AddShiftComponent } from './components/add-shift/add-shift.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { EditShiftComponent } from './components/edit-shift/edit-shift.component';
@@ -13,10 +14,18 @@ const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'MyShifts', component: MyShiftsComponent },
-  { path: 'AddShift', component: AddShiftComponent },
-  { path: 'EditProfile', component: EditProfileComponent },
-  { path: 'editShift/:shiftName', component: EditShiftComponent },
+  { path: 'MyShifts', component: MyShiftsComponent, canActivate: [AuthGuard] },
+  { path: 'AddShift', component: AddShiftComponent, canActivate: [AuthGuard] },
+  {
+    path: 'EditProfile',
+    component: EditProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'editShift/:shiftName',
+    component: EditShiftComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

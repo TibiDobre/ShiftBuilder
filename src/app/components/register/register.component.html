@@ -1,51 +1,54 @@
-<form [formGroup]="registerForm">
-    <div>
+<h2 style="font-weight: bold; color:#3e4444; margin-left: 40%;"> Register</h2>
+<div class="register">
+    <form [formGroup]="registerForm">
         <div>
-            <label style="font-weight: bold; margin-right: 5px;">Username</label>
-            <input style="margin: 10px;" type="text" formControlName="username" placeholder="Type your username" />
-            <span *ngIf="username.invalid && username.touched">*Username must have at least 6 characters</span>
+            <div>
+                <label style="font-weight:bold; margin-right:5px; color:#3e4444">Username</label>
+                <input style="margin:10px;" type="text" formControlName="username" placeholder="Type your username" />
+                <span *ngIf="username.invalid && username.touched">*Username must have at least 6 characters</span>
+            </div>
+
+            <div>
+                <label style="font-weight:bold; margin-right:33px; color:#3e4444">Email</label>
+                <input style="margin:10px;" type="email" formControlName="email" placeholder="Type your email" />
+                <span *ngIf="email.invalid && email.touched">*Email must be valid</span>
+            </div>
+
+            <div>
+                <label style="font-weight:bold; margin-right:8px; color:#3e4444">Password</label>
+                <input style="margin:10px;" type="password" formControlName="password" placeholder="Type your password" />
+                <span *ngIf="password.invalid && password.touched">*Password must be valid</span>
+            </div>
+
+            <div>
+                <label style="font-weight:bold; color:#3e4444">First name</label>
+                <input style="margin:10px;" type="text" formControlName="firstname" placeholder="Type your firstname" />
+                <span *ngIf="firstname.invalid && firstname.touched">*First name must have at least 2 characters</span>
+            </div>
+
+
+            <div>
+                <label style="font-weight:bold; margin-right:2px; color:#3e4444">Last name</label>
+                <input style="margin:10px;" type="text" formControlName="lastname" placeholder="Type your lastname" />
+                <span *ngIf="lastname.invalid && lastname.touched">*Last name must have at least 2 characters</span>
+            </div>
+
+            <div>
+                <label style="font-weight:bold; margin-right:45px; color:#3e4444">Age</label>
+                <input style="margin:10px; width:170px;" type="number" formControlName="age" placeholder="Type your age" min="6" max="130" />
+                <span *ngIf="age.invalid && age.touched">*Age must be 6 to 130</span>
+            </div>
+
+
+
+            <div>
+                <button style="margin-left:30%; font-weight:bold; color:#3e4444" type="submit" (click)="register()" [disabled]="registerForm.invalid">Register</button>
+            </div>
+
+            <div>
+                {{message}}
+            </div>
+
         </div>
-
-        <div>
-            <label style="font-weight: bold; margin-right: 33px;">Email</label>
-            <input style="margin: 10px;" type="email" formControlName="email" placeholder="Type your email" />
-            <span *ngIf="email.invalid && email.touched">*Email must be valid</span>
-        </div>
-
-        <div>
-            <label style="font-weight: bold; margin-right:8px;">Password</label>
-            <input style="margin:10px;" type="password" formControlName="password" placeholder="Type your password" />
-            <span *ngIf="password.invalid && password.touched">*Password must be valid</span>
-        </div>
-
-        <div>
-            <label style="font-weight: bold;">First name</label>
-            <input style="margin: 10px;" type="text" formControlName="firstname" placeholder="Type your firstname" />
-            <span *ngIf="firstname.invalid && firstname.touched">*First name must have at least 2 characters</span>
-        </div>
-
-
-        <div>
-            <label style="font-weight: bold; margin-right: 2px;">Last name</label>
-            <input style="margin: 10px;" type="text" formControlName="lastname" placeholder="Type your lastname" />
-            <span *ngIf="lastname.invalid && lastname.touched">*Last name must have at least 2 characters</span>
-        </div>
-
-        <div>
-            <label style="font-weight: bold; margin-right: 45px;">Age</label>
-            <input style="margin: 10px; width:170px;" type="number" formControlName="age" placeholder="Type your age" min="6" max="130" />
-            <span *ngIf="age.invalid && age.touched">*Age must be 6 to 130</span>
-        </div>
-
-
-
-        <div>
-            <button style="margin-left:5%;" type="submit" (click)="register()" [disabled]="registerForm.invalid">Register</button>
-        </div>
-
-        <div>
-            {{message}}
-        </div>
-
-    </div>
-</form>
+    </form>
+</div>

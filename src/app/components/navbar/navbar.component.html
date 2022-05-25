@@ -1,18 +1,18 @@
-<table>
+<table class="navbar">
     <tr>
         <td>
-            <img src="/assets/Logo.png">
-            <a routerLink="/MyShifts">My shifts</a>&nbsp;
-            <a routerLink="/AddShift">Add a shift</a>&nbsp;
-            <a routerLink="/EditProfile">Edit your profile</a>
+            <img style="width:300px; height:200px;" src="/assets/Cat.png"> <br><br>
+            <a style="font-weight:bold; margin-right:33px; color:#3e4444;" routerLink="/MyShifts">My shifts</a>&nbsp;
+            <a style="font-weight:bold; margin-right:33px; color:#3e4444;" routerLink="/AddShift">Add a shift</a>&nbsp;
+            <a style="font-weight:bold; margin-right:33px; color:#3e4444;" routerLink="/EditProfile">Edit your profile</a>
         </td>
 
         <td>
-            <a routerLink="/login">Log In</a><br>
-            <a routerLink="/register">Register</a><br>
+            <a style="font-weight:bold; margin-right:33px; color:#3e4444;" routerLink="/login">Log In</a><br>
+            <a style="font-weight:bold; margin-right:33px; color:#3e4444;" routerLink="/register">Register</a><br>
 
-            <button (click)="logOut()" *ngIf="userProfile"> Log out</button>
-            <h3 *ngIf="userProfile"> Hello,{{userProfile?.firstname}} </h3>
+            <button style="font-weight:bold; margin-right:33px; color:#3e4444;" (click)="logOut()" *ngIf="userProfile">Log out</button>
+            <h3 style="font-weight:bold; margin-right:33px; color:#3e4444;" *ngIf="userProfile"> Hello, {{userProfile?.firstname}} </h3>
         </td>
     </tr>
 </table>

@@ -1,0 +1,13 @@
+.shiftsTable {
+    margin-top: 3%;
+    display: flex;
+    margin-left: 25%;
+    /* justify-content: center; */
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

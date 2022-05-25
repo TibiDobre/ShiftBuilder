@@ -1,52 +1,54 @@
-<h3>Add shift</h3>
-<form [formGroup]="AddShiftForm">
-    <div>
-        <label style="font-weight: bold; margin-right: 62px;">Date</label>
-        <input style="margin: 10px; width: 155px;" type="date" formControlName="date" placeholder="Select a date" />
-        <span *ngIf="date.invalid&&date.touched">*Date must be specified</span>
-    </div>
+<h2 style="font-weight: bold; color:#3e4444; margin-left: 40%;"> Add shift</h2>
+<div class="addShift">
+    <form [formGroup]="AddShiftForm">
+        <div>
+            <label style="font-weight:bold; margin-right:62px; color:#3e4444;">Date</label>
+            <input style="margin:10px; width:155px;" type="date" formControlName="date" placeholder="Select a date" />
+            <span *ngIf="date.invalid&&date.touched">*Date must be specified</span>
+        </div>
 
-    <div>
-        <label style="font-weight: bold; margin-right: 25px;">Start time</label>
-        <input style="margin: 10px; width: 150px;" type="number" formControlName="startTime" placeholder="Select start time" min="0" max="23" />
-        <span *ngIf="startTime.invalid&&startTime.touched">*Start time must be specified between 0 and 23</span>
-    </div>
+        <div>
+            <label style="font-weight:bold; margin-right:25px; color:#3e4444;">Start time</label>
+            <input style="margin:10px; width:152px;" type="number" formControlName="startTime" placeholder="Select start time" min="0" max="23" />
+            <span *ngIf="startTime.invalid&&startTime.touched">*Start time must be specified between 0 and 23</span>
+        </div>
 
-    <div>
-        <label style="font-weight: bold; margin-right: 30px;">End time</label>
-        <input style="margin: 10px; width: 150px;" type="number" formControlName="endTime" placeholder="Select end time" min="0" max="23" />
-        <span *ngIf="endTime.invalid&&endTime.touched">*End time must be specified between 0 and 23</span>
-    </div>
+        <div>
+            <label style="font-weight:bold; margin-right:30px; color:#3e4444;">End time</label>
+            <input style="margin:10px; width:152px;" type="number" formControlName="endTime" placeholder="Select end time" min="0" max="23" />
+            <span *ngIf="endTime.invalid&&endTime.touched">*End time must be specified between 0 and 23</span>
+        </div>
 
-    <div>
-        <label style="font-weight: bold; margin-right: 5px;">Hourly wage</label>
-        <input style="margin: 10px; width: 150px;" type="number" formControlName="hourlyWage" placeholder="Add your hourly wage" min="0" />
-        <span *ngIf="hourlyWage.invalid&&hourlyWage.touched">*Hourly wage must be specified</span>
-    </div>
+        <div>
+            <label style="font-weight:bold; margin-right:5px; color:#3e4444;">Hourly wage</label>
+            <input style="margin:10px; width:152px;" type="number" formControlName="hourlyWage" placeholder="Add your hourly wage" min="0" />
+            <span *ngIf="hourlyWage.invalid&&hourlyWage.touched">*Hourly wage must be specified</span>
+        </div>
 
-    <div>
-        <label style="font-weight: bold; margin-right: 13px;">Shift place</label>
-        <select style="margin: 10px; width: 160px;" formControlName="workPlace" placeholder="Select your work place">
+        <div>
+            <label style="font-weight:bold; margin-right:13px; color:#3e4444;">Shift place</label>
+            <select style="margin:15px; width:162px;" formControlName="workPlace" placeholder="Select your work place">
             <option>Bucuresti</option>
             <option>Ploiesti</option>
             <option>Targoviste</option>
         </select>
-        <span *ngIf="workPlace.invalid&&workPlace.touched">*Work place must be specified</span>
-    </div>
+            <span *ngIf="workPlace.invalid&&workPlace.touched">*Work place must be specified</span>
+        </div>
 
-    <div>
-        <label style="font-weight: bold; margin-right: 18px;">Shift name</label>
-        <input style="margin: 10px; width: 150px;" type="text" formControlName="shiftName" placeholder="Add a shift name" />
-        <span *ngIf="shiftName.invalid&&shiftName.touched">*Shift name must be specified</span>
-    </div>
+        <div>
+            <label style="font-weight:bold; margin-right:18px; color:#3e4444;">Shift name</label>
+            <input style="margin:8px; width:153px;" type="text" formControlName="shiftName" placeholder="Add a shift name" />
+            <span *ngIf="shiftName.invalid&&shiftName.touched">*Shift name must be specified</span>
+        </div>
 
-    <div>
-        <label style="font-weight: bold; margin-right: 25px;">Comments</label>
-        <textarea style="margin-right: 15px;" formControlName="comments" placeholder="12 hours shift"></textarea>
-    </div>
+        <div>
+            <label style="font-weight:bold; margin-right:25px; color:#3e4444;">Comments</label>
+            <textarea style="margin-top:10px;width:160px;" formControlName="comments" placeholder="12 hours shift"></textarea>
+        </div>
+        <br>
+        <button style="margin-left: 30%; color:#3e4444; font-weight:bold;" (click)="AddShift()" [disabled]="AddShiftForm.invalid">Save shift</button>
 
-    <button style="margin-left:5%;" (click)="AddShift()" [disabled]="AddShiftForm.invalid">Save shift</button>
+        <div>{{message}}</div>
 
-    <div>{{message}}</div>
-
-</form>
+    </form>
+</div>

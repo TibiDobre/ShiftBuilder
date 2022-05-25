@@ -11,6 +11,7 @@ import { FirestoreService } from 'src/app/firestore.service';
 })
 export class LoginComponent implements OnInit {
   message = '';
+  loading = false;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -39,9 +40,10 @@ export class LoginComponent implements OnInit {
       const password = this.password.value;
       await this.authService.login(email, password);
       this.message = 'Login successful! Redirecting...';
+      this.loading = true;
       setTimeout(() => {
         this.router.navigate(['']);
-      }, 1500);
+      }, 5000);
     } catch (err) {
       this.message = 'Login failed!';
       this.password.setValue('');
