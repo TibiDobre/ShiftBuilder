@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       this.loading = true;
       setTimeout(() => {
         this.router.navigate(['']);
-      }, 5000);
+      }, 3500);
     } catch (err) {
       this.message = 'Login failed!';
       this.password.setValue('');

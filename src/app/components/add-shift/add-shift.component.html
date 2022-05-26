@@ -1,8 +1,8 @@
-<h2 style="font-weight: bold; color:#3e4444; margin-left: 40%;"> Add shift</h2>
+<h2 style="font-weight: bold; color:#3e4444; margin-left: 42%;"> Add shift</h2>
 <div class="addShift">
     <form [formGroup]="AddShiftForm">
         <div>
-            <label style="font-weight:bold; margin-right:62px; color:#3e4444;">Date</label>
+            <label style="font-weight:bold; margin-right:60px; color:#3e4444;">Date</label>
             <input style="margin:10px; width:155px;" type="date" formControlName="date" placeholder="Select a date" />
             <span *ngIf="date.invalid&&date.touched">*Date must be specified</span>
         </div>
@@ -47,8 +47,8 @@
         </div>
         <br>
         <button style="margin-left: 30%; color:#3e4444; font-weight:bold;" (click)="AddShift()" [disabled]="AddShiftForm.invalid">Save shift</button>
-
-        <div>{{message}}</div>
+        <br>
+        <div style="font-weight:bold; color:#3e4444; margin-left: 10%; margin-top: 10%; ">{{message}}</div>
 
     </form>
 </div>

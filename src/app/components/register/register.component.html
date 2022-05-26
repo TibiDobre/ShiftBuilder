@@ -1,4 +1,4 @@
-<h2 style="font-weight: bold; color:#3e4444; margin-left: 40%;"> Register</h2>
+<h2 style="font-weight: bold; color:#3e4444; margin-left: 42%;"> Register</h2>
 <div class="register">
     <form [formGroup]="registerForm">
         <div>
@@ -38,14 +38,16 @@
                 <input style="margin:10px; width:170px;" type="number" formControlName="age" placeholder="Type your age" min="6" max="130" />
                 <span *ngIf="age.invalid && age.touched">*Age must be 6 to 130</span>
             </div>
-
+            <br>
 
 
             <div>
-                <button style="margin-left:30%; font-weight:bold; color:#3e4444" type="submit" (click)="register()" [disabled]="registerForm.invalid">Register</button>
+                <button style="margin-left:20%; font-weight:bold; color:#3e4444" type="submit" (click)="register()" [disabled]="registerForm.invalid">Register</button>
             </div>
+            <br>
+            <img style="width:50%; height:50%; margin-left:2%;" *ngIf="loading" src="/assets/loading-cat2.gif">
 
-            <div>
+            <div style="font-weight:bold; color:#3e4444; margin-top:10%;">
                 {{message}}
             </div>
 

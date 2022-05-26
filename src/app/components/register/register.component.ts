@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { FirestoreService } from 'src/app/firestore.service';
 
@@ -10,6 +11,7 @@ import { FirestoreService } from 'src/app/firestore.service';
 })
 export class RegisterComponent implements OnInit {
   message = '';
+  loading = true;
   registerForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -38,7 +40,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public firestoreService: FirestoreService
+    public firestoreService: FirestoreService,
+    private router: Router
   ) {}
 
   get username() {
@@ -83,7 +86,11 @@ export class RegisterComponent implements OnInit {
         age
       );
 
-      this.message = 'Register succesful.';
+      this.message = 'Register succesful. Loading your new account...';
+      this.loading = true;
+      setTimeout(() => {
+        this.router.navigate(['login']);
+      }, 3500);
       this.username.setValue('');
       this.email.setValue('');
       this.password.setValue('');

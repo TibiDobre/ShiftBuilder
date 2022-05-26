@@ -1,12 +1,12 @@
-<h2 style="font-weight: bold; color:#3e4444; margin-left: 40%;">My shifts</h2>
-<div>
-    <label>Start date</label>
-    <input type="date" [(ngModel)]="startDate">
+<h2 style="font-weight:bold; color:#3e4444; margin-left:42%;">My shifts</h2>
+<div class="searchShifts">
+    <label style="font-weight:bold; color:#3e4444;">Start date</label>
+    <input style="margin:10px; margin-left:2%; width:155px;" type="date" [(ngModel)]="startDate">
     <br>
-    <label>End date</label>
-    <input type="date" [(ngModel)]="endDate">
+    <label style="font-weight:bold; color:#3e4444;">End date</label>
+    <input style="margin:10px; margin-left:2.5%; width:155px;" type="date" [(ngModel)]="endDate">
     <br>
-    <label>Shift place</label>
+    <label style="font-weight:bold; color:#3e4444;">Shift place</label>
     <select style="margin:15px; width:162px;" [(ngModel)]="shiftPlace">
         <option></option>
         <option>Bucuresti</option>
@@ -14,9 +14,9 @@
         <option>Targoviste</option>
     </select>
     <br>
-    <button (click)="search()">Search</button>
+    <button style="font-weight:bold; color:#3e4444; margin-left:7%;" (click)="search()">Search</button>
 
-    <p style="color: red;">{{message}}</p>
+    <p style="font-weight:bold; color:red; margin-left:5%;">{{message}}</p>
 
 </div>
 <div class="shiftsTable">

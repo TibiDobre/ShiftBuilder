@@ -9,7 +9,9 @@
 
         <td>
             <a style="font-weight:bold; margin-right:33px; color:#3e4444;" routerLink="/login">Log In</a><br>
+            <br>
             <a style="font-weight:bold; margin-right:33px; color:#3e4444;" routerLink="/register">Register</a><br>
+            <br>
 
             <button style="font-weight:bold; margin-right:33px; color:#3e4444;" (click)="logOut()" *ngIf="userProfile">Log out</button>
             <h3 style="font-weight:bold; margin-right:33px; color:#3e4444;" *ngIf="userProfile"> Hello, {{userProfile?.firstname}} </h3>

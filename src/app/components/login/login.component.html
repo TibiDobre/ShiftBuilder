@@ -1,23 +1,28 @@
-<h2>Log in</h2>
-<p style="color:red; font-weight: bold;">You must log in to access restricted informations.</p>
-<form [formGroup]="loginForm">
-    <div>
-        <label style="font-weight: bold; margin-right: 33px;">Email</label>
-        <input style="margin: 10px;" type="email" formControlName="email" placeholder="Type your email" />
-        <span *ngIf="email.invalid && email.touched">*Email must be valid</span>
-    </div>
+<h2 style="margin-left: 42.5%; color:#3e4444;">Log in</h2>
+<p style="color:red; font-weight:bold; margin-left: 36.5%;">You must log in to access restricted informations.</p>
 
-    <div>
-        <label style="font-weight: bold; margin-right:8px;">Password</label>
-        <input style="margin:10px;" type="password" formControlName="password" placeholder="Type your password" />
-        <span *ngIf="password.invalid && password.touched">*Password must be valid</span>
-    </div>
+<div class="login">
+    <form [formGroup]="loginForm">
+        <div>
+            <label style="font-weight:bold; margin-right:33px; color:#3e4444;">Email</label>
+            <input style="margin: 10px;" type="email" formControlName="email" placeholder="Type your email" />
+            <span *ngIf="email.invalid && email.touched">*Email must be valid</span>
+        </div>
 
-    <div>
-        <button type="submit" (click)="login()" [disabled]="loginForm.invalid">Log in</button>
-    </div>
+        <div>
+            <label style="font-weight:bold; margin-right:8px; color:#3e4444;">Password</label>
+            <input style="margin:10px;" type="password" formControlName="password" placeholder="Type your password" />
+            <span *ngIf="password.invalid && password.touched">*Password must be valid</span>
+        </div>
 
-    <div>
-        {{message}}
-    </div>
-</form>
+        <div>
+            <button style="font-weight:bold; color:#3e4444; margin-left: 36.5%;" type="submit" (click)="login()" [disabled]="loginForm.invalid">Log in</button>
+        </div>
+
+        <img style="width:50%; height:50%;" *ngIf="loading" src="/assets/loading-cat1.gif">
+
+        <div style="font-weight:bold; color:#3e4444; margin-left: 10%; margin-top: 10%;">
+            {{message}}
+        </div>
+    </form>
+</div>
