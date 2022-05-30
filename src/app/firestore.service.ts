@@ -98,4 +98,17 @@ export class FirestoreService {
     }
     return userShifts.orderBy('date').get();
   }
+  getUpComingShift(email: string, now: Date) {
+    return this.firestore.firestore
+      .collection('shifts')
+      .orderBy('date')
+      .where('userEmail', '==', email)
+      .where(
+        'date',
+        '>',
+        now.getFullYear + '-' + (now.getMonth() + 1) + '-' + now.getDate()
+      )
+      .limit(1)
+      .get();
+  }
 }
