@@ -46,6 +46,7 @@ export class FirestoreService {
     return this.firestore.firestore
       .collection('shifts')
       .where('userEmail', '==', currentUserEmail)
+      .orderBy('date')
       .get();
   }
 
@@ -95,6 +96,6 @@ export class FirestoreService {
     if (shiftPlace) {
       userShifts = userShifts.where('workPlace', '==', shiftPlace!);
     }
-    return userShifts.get();
+    return userShifts.orderBy('date').get();
   }
 }
