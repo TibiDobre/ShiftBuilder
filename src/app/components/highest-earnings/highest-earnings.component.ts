@@ -9,6 +9,8 @@ import { FirestoreService } from 'src/app/firestore.service';
   styleUrls: ['./highest-earnings.component.css'],
 })
 export class HighestEarningsComponent implements OnInit {
+  month: string = '';
+  earnings: number = 0;
   constructor(
     private firestoreService: FirestoreService,
     private authService: AuthService
@@ -21,7 +23,7 @@ export class HighestEarningsComponent implements OnInit {
     const shifts: Shift[] = [];
     data.forEach((shiftData) => {
       const shift: Shift = {
-        date: new Date(shiftData.data()['date']),
+        date: shiftData.data()['date'].toDate(),
         startTime: shiftData.data()['startTime'],
         endTime: shiftData.data()['endTime'],
         hourlyWage: shiftData.data()['hourlyWage'],
@@ -33,14 +35,31 @@ export class HighestEarningsComponent implements OnInit {
       shifts.push(shift);
     });
 
-    // const earningsByMonth: number[] = [];
+    const earningsByMonth: Map<number, number> = new Map();
 
-    // for (let i = 0; i < shifts.length; i++) {
-    //   let shift = shifts[i];
-    //   let monthKey = this.getMonthKey(shift);
-    //   let existingValue = earningsByMonth[monthKey] ?? 0;
-    //   earningsByMonth[monthKey] = existingValue + this.getEarnings(shift);
-    // }
+    for (let i = 0; i < shifts.length; i++) {
+      let shift = shifts[i];
+      let monthKey = this.getMonthKey(shift);
+      let existingValue = earningsByMonth.get(monthKey) ?? 0;
+      earningsByMonth.set(monthKey, existingValue + this.getEarnings(shift));
+    }
+
+    let maxEarningsValue = 0;
+    let maxEarningsMonth = 0;
+
+    for (const entry of earningsByMonth.entries()) {
+      const key = entry[0];
+      const value = entry[1];
+      if (value > maxEarningsValue) {
+        maxEarningsValue = value;
+        maxEarningsMonth = key;
+      }
+    }
+    const bestYear = Math.trunc(maxEarningsMonth / 100);
+    const bestMonth = maxEarningsMonth - bestYear * 100;
+
+    this.month = bestYear + '-' + bestMonth;
+    this.earnings = maxEarningsValue;
   }
 
   getMonthKey(shift: Shift): number {
