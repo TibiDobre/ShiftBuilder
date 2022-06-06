@@ -106,4 +106,20 @@ export class FirestoreService {
       .where('date', '>', now)
       .get();
   }
+
+  private addDays(date: Date, days: number): Date {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
+  getPastWeekShifts(email: string, now: Date) {
+    return this.firestore.firestore
+      .collection('shifts')
+      .orderBy('date', 'desc')
+      .where('userEmail', '==', email)
+      .where('date', '<', now)
+      .where('date', '>', this.addDays(now, -7))
+      .get();
+  }
 }
