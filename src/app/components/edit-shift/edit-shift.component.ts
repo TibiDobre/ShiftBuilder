@@ -67,8 +67,19 @@ export class EditShiftComponent implements OnInit {
       const shiftName = p['shiftName'];
       const data = await this.fireStoreService.getShiftByName(shiftName);
       const shiftData = data.docs[0].data();
-
-      this.date.setValue(shiftData['date']);
+      const date = shiftData['date'].toDate();
+      const yearString = date.getFullYear().toString();
+      let monthString = (date.getMonth() + 1).toString();
+      if (monthString.length == 1) {
+        monthString = '0' + monthString;
+      }
+      let dayString = date.getDate().toString();
+      if (dayString.length == 1) {
+        dayString = '0' + dayString;
+      }
+      const dateString = yearString + '-' + monthString + '-' + dayString;
+      //date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      this.date.setValue(dateString);
       this.startTime.setValue(shiftData['startTime']);
       this.endTime.setValue(shiftData['endTime']);
       this.hourlyWage.setValue(shiftData['hourlyWage']);
@@ -85,8 +96,10 @@ export class EditShiftComponent implements OnInit {
       return;
     }
     const userEmail = this.authService.getCurrentUser()?.email;
+    const time = new Date(this.date.value);
+    time.setHours(this.startTime.value);
     const shift: Shift = {
-      date: this.date.value,
+      date: time,
       startTime: this.startTime.value,
       endTime: this.endTime.value,
       hourlyWage: this.hourlyWage.value,

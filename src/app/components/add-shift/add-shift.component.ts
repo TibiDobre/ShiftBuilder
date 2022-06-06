@@ -80,9 +80,12 @@ export class AddShiftComponent implements OnInit {
       alert('Hey Smarty Pants, there is another shift with this name.');
       return;
     }
+
     const userEmail = this.authService.getCurrentUser()?.email;
+    const time = new Date(this.date.value);
+    time.setHours(this.startTime.value);
     const shift: Shift = {
-      date: this.date.value,
+      date: time,
       startTime: this.startTime.value,
       endTime: this.endTime.value,
       hourlyWage: this.hourlyWage.value,

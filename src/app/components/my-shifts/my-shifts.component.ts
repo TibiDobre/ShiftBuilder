@@ -29,7 +29,7 @@ export class MyShiftsComponent implements OnInit {
 
       data.forEach((shiftData) => {
         const shift: Shift = {
-          date: shiftData.data()['date'],
+          date: shiftData.data()['date'].toDate().toLocaleDateString(),
           startTime: shiftData.data()['startTime'],
           endTime: shiftData.data()['endTime'],
           hourlyWage: shiftData.data()['hourlyWage'],
