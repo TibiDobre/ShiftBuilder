@@ -103,12 +103,7 @@ export class FirestoreService {
       .collection('shifts')
       .orderBy('date')
       .where('userEmail', '==', email)
-      .where(
-        'date',
-        '>',
-        now.getFullYear + '-' + (now.getMonth() + 1) + '-' + now.getDate()
-      )
-      .limit(1)
+      .where('date', '>', now)
       .get();
   }
 }
