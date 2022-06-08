@@ -16,13 +16,11 @@
         </div>
 
         <div>
-            <button style="font-weight:bold; color:#3e4444; margin-left: 36.5%;" type="submit" (click)="login()" [disabled]="loginForm.invalid">Log in</button>
+            <button style="font-weight:bold; color:#3e4444;" type="submit" (click)="login()" [disabled]="loginForm.invalid">Log in</button>
         </div>
         <br>
         <img style="width:50%; height:50%;" *ngIf="loading" src="/assets/loading-cat1.gif">
-
-
-
+        <br>
         <div style="font-weight:bold; color:#3e4444; margin-left: 10%; margin-top: 10%;">
             {{message}}
         </div>

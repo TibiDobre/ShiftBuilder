@@ -80,8 +80,10 @@ export class HighestEarningsComponent implements OnInit {
       this.monthNames[bestMonth - 1] +
       ', ' +
       bestYear +
+      '\n' +
       ' with a total of ' +
-      maxEarningsValue;
+      maxEarningsValue +
+      ' $.';
   }
 
   getMonthKey(shift: Shift): number {
