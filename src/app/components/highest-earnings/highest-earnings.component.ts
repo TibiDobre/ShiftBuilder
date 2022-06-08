@@ -9,8 +9,21 @@ import { FirestoreService } from 'src/app/firestore.service';
   styleUrls: ['./highest-earnings.component.css'],
 })
 export class HighestEarningsComponent implements OnInit {
-  month: string = '';
-  earnings: number = 0;
+  message: string = '';
+  monthNames: string[] = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
   constructor(
     private firestoreService: FirestoreService,
     private authService: AuthService
@@ -20,6 +33,10 @@ export class HighestEarningsComponent implements OnInit {
     const data = await this.firestoreService.getAllShiftsForUser(
       this.authService.getCurrentUser()?.email
     );
+    if (data.size == 0) {
+      this.message = "You don't have enough shifts yet.";
+      return;
+    }
     const shifts: Shift[] = [];
     data.forEach((shiftData) => {
       const shift: Shift = {
@@ -58,8 +75,13 @@ export class HighestEarningsComponent implements OnInit {
     const bestYear = Math.trunc(maxEarningsMonth / 100);
     const bestMonth = maxEarningsMonth - bestYear * 100;
 
-    this.month = bestYear + '-' + bestMonth;
-    this.earnings = maxEarningsValue;
+    this.message =
+      'The month with the highest earnings has been ' +
+      this.monthNames[bestMonth - 1] +
+      ', ' +
+      bestYear +
+      ' with a total of ' +
+      maxEarningsValue;
   }
 
   getMonthKey(shift: Shift): number {

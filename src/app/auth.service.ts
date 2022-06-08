@@ -50,9 +50,9 @@ export class AuthService {
     return this.afauth.createUserWithEmailAndPassword(email, password);
   }
 
-  logOut() {
+  async logOut() {
     localStorage.removeItem('currentUser');
-    return this.afauth.signOut();
+    await this.afauth.signOut();
   }
 
   getCurrentUser(): UserProfile | undefined {

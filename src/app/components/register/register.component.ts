@@ -11,7 +11,7 @@ import { FirestoreService } from 'src/app/firestore.service';
 })
 export class RegisterComponent implements OnInit {
   message = '';
-  loading = true;
+  loading = false;
   registerForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit {
       this.message = 'Register succesful. Loading your new account...';
       this.loading = true;
       setTimeout(() => {
-        this.router.navigate(['login']);
+        this.router.navigate(['']);
       }, 3500);
       this.username.setValue('');
       this.email.setValue('');

@@ -21,7 +21,20 @@ import { HighestEarningsComponent } from './components/highest-earnings/highest-
 import { EditShiftComponent } from './components/edit-shift/edit-shift.component';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, IndexComponent, NavbarComponent, MyShiftsComponent, EditProfileComponent, AddShiftComponent, UpComingShiftComponent, PastWeekShiftsComponent, HighestEarningsComponent, EditShiftComponent],
+  declarations: [
+    AppComponent,
+    RegisterComponent,
+    LoginComponent,
+    IndexComponent,
+    NavbarComponent,
+    MyShiftsComponent,
+    EditProfileComponent,
+    AddShiftComponent,
+    UpComingShiftComponent,
+    PastWeekShiftsComponent,
+    HighestEarningsComponent,
+    EditShiftComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
