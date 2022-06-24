@@ -23,24 +23,24 @@
     <table *ngIf="!message">
         <thead>
             <tr>
-                <th style="font-weight: bold; color:#3e4444;">Date</th>
-                <th style="font-weight: bold; color:#3e4444;">Start time</th>
-                <th style="font-weight: bold; color:#3e4444;">End time</th>
-                <th style="font-weight: bold; color:#3e4444;">Hourly wage</th>
-                <th style="font-weight: bold; color:#3e4444;">Shift place</th>
-                <th style="font-weight: bold; color:#3e4444;">Shift name</th>
-                <th style="font-weight: bold; color:#3e4444;">Earnings</th>
-                <th style="font-weight: bold; color:#3e4444;">Edit your shift</th>
+                <th>Date</th>
+                <th>Start time</th>
+                <th>End time</th>
+                <th>Hourly wage</th>
+                <th>Shift place</th>
+                <th>Shift name</th>
+                <th>Earnings</th>
+                <th>Edit your shift</th>
             </tr>
         </thead>
         <tr *ngFor="let shift of shifts">
-            <td style="font-weight: bold; color:#3e4444; text-align: center;">{{shift.date}}</td>
-            <td style="font-weight: bold; color:#3e4444; text-align: center;">{{shift.startTime}}</td>
-            <td style="font-weight: bold; color:#3e4444; text-align: center;">{{shift.endTime}}</td>
-            <td style="font-weight: bold; color:#3e4444; text-align: center;">{{shift.hourlyWage}}</td>
-            <td style="font-weight: bold; color:#3e4444; text-align: center;">{{shift.workPlace}}</td>
-            <td style="font-weight: bold; color:#3e4444; text-align: center;">{{shift.shiftName}}</td>
-            <td style="font-weight: bold; color:#3e4444; text-align: center;">{{shift.hourlyWage * (shift.endTime - shift.startTime)}}</td>
+            <td id="td">{{shift.date}}</td>
+            <td id="td">{{shift.startTime}}</td>
+            <td id="td">{{shift.endTime}}</td>
+            <td id="td">{{shift.hourlyWage}}</td>
+            <td id="td">{{shift.workPlace}}</td>
+            <td id="td">{{shift.shiftName}}</td>
+            <td id="td">{{shift.hourlyWage * (shift.endTime - shift.startTime)}}</td>
             <td>
                 <!-- <a routerLink="/editShift/{{encode(shift.shiftName)}}">Edit shift</a> -->
                 <a style="font-weight: bold; color:#3e4444; margin-left: 35%; text-align: center;" [routerLink]="['/editShift', shift.shiftName]">Edit</a>

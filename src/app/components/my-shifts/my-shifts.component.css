@@ -17,3 +17,14 @@ td {
     margin-left: 37%;
     justify-content: center;
 }
+
+.th {
+    font-weight: bold;
+    color: #3e4444;
+}
+
+#td{
+    font-weight: bold; 
+    color:#3e4444;
+    text-align: center;
+}

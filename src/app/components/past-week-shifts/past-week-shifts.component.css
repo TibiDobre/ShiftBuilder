@@ -10,3 +10,14 @@ td {
     border: 1px solid black;
     border-collapse: collapse;
 }
+
+#pws {
+    font-weight: bold;
+    color: #3e4444;
+}
+
+#tdpws{
+    font-weight: bold; 
+    color:#3e4444; 
+    text-align: center;
+}
